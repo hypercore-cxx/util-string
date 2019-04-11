@@ -3,7 +3,6 @@
 #include <regex>
 #include <string>
 #include <vector>
-#include <functional>
 
 namespace Util {
   namespace String {
@@ -11,8 +10,9 @@ namespace Util {
       std::vector<std::string> elems;
       std::regex re(res);
 
-      std::sregex_token_iterator iter(s.begin(), s.end(), re, -1);
-      std::sregex_token_iterator end;
+      std::sregex_token_iterator
+        iter(s.begin(), s.end(), re, -1),
+        end;
 
       while (iter != end) {
         elems.push_back(*iter);
@@ -26,8 +26,9 @@ namespace Util {
       std::vector<std::string> elems;
       std::regex re(res);
 
-      std::sregex_token_iterator iter(s.begin(), s.end(), re);
-      std::sregex_token_iterator end;
+      std::sregex_token_iterator
+        iter(s.begin(), s.end(), re),
+        end;
 
       while (iter != end) {
         elems.push_back(*iter);
@@ -40,6 +41,5 @@ namespace Util {
     std::string replace(const std::string &s, const std::string &res, const std::string &rep) {
       return std::regex_replace(s, std::regex(res), rep);
     }
-
   } // namespace String
 } // namespace Util

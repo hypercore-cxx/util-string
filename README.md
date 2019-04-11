@@ -41,7 +41,7 @@ ASSERT("replaced tokens in string", r == "HeL0L1o, WorL2d!");
 ```
 
 # TESTING
-Using the [`dat-cxx`][0] build tool, run the following command.
+Using the [`datcxx`][0] build tool, run the following command.
 
 ```bash
 build run test
