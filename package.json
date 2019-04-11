@@ -1,0 +1,20 @@
+{
+  "name": "util",
+  "description": "Helpers for strings, arrays, objects, etc.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:datcxx/cxx-utils.git"
+  },
+  "dependencies": {},
+  "license": "MIT",
+  "scripts": {
+    "test": "c++ -std=c++2a index.cxx test/index.cxx -o test/index && ./test/index"
+  },
+  "flags": [
+    "-std=c++2a"
+  ],
+  "files": [
+    "index.hxx",
+    "index.cxx"
+  ]
+}
