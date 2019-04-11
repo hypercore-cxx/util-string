@@ -3,7 +3,7 @@
   "description": "Helpers for strings, arrays, objects, etc.",
   "repository": {
     "type": "git",
-    "url": "git@github.com:datcxx/cxx-utils.git"
+    "url": "git@github.com:datcxx/cxx-util.git"
   },
   "dependencies": {},
   "license": "MIT",
