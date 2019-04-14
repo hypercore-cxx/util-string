@@ -17,7 +17,7 @@ int main () {
   using namespace std;
 
   int count = 0;
-  int plan = 4;
+  int plan = 7;
 
   string f = "/test/parallel/test-path.js";
   
@@ -44,6 +44,21 @@ int main () {
     });
 
     ASSERT("replaced tokens in string", r == "HeL0L1o, WorL2d!");
+  }
+
+  {
+    auto r = Util::String::trim("!Hello, World!!", "!");
+    ASSERT("trim", r == "Hello, World");
+  }
+
+  {
+    auto r = Util::String::rtrim("!Hello, World!!", "!");
+    ASSERT("rtrim", r == "!Hello, World");
+  }
+
+  {
+    auto r = Util::String::ltrim("!Hello, World!!", "!");
+    ASSERT("ltrim", r == "Hello, World!!");
   }
 
   ASSERT("count == plan", count == plan)

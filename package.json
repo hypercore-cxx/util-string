@@ -8,13 +8,12 @@
   "dependencies": {},
   "license": "MIT",
   "scripts": {
-    "test": "c++ -std=c++2a index.cxx test/index.cxx -o test/index && ./test/index"
+    "test": "c++ -std=c++2a test/index.cxx -o test/index && ./test/index"
   },
   "flags": [
     "-std=c++2a"
   ],
   "files": [
-    "index.hxx",
-    "index.cxx"
+    "index.hxx"
   ]
 }

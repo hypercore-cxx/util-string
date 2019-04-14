@@ -21,6 +21,19 @@ auto r = Util::String::split(f, "/");
 ASSERT("parts after split == 4", r.size() == 4);
 ```
 
+### TRIM, RTRIM, LTRIM
+
+```c++
+auto r = Util::String::trim("/foobar//", "/");
+ASSERT("parts after split == 4", r.trim() == "foobar");
+
+auto r = Util::String::rtrim("!Hello, World!!", "!");
+ASSERT("rtrim", r == "!Hello, World");
+
+auto r = Util::String::ltrim("!Hello, World!!", "!");
+ASSERT("ltrim", r == "Hello, World!!");
+```
+
 ### REPLACE
 
 ```c++
