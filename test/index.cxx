@@ -17,7 +17,7 @@ int main () {
   using namespace std;
 
   int count = 0;
-  int plan = 7;
+  int plan = 14;
 
   string f = "/test/parallel/test-path.js";
   
@@ -59,6 +59,41 @@ int main () {
   {
     auto r = Util::String::ltrim("!Hello, World!!", "!");
     ASSERT("ltrim", r == "Hello, World!!");
+  }
+
+  {
+    auto r = Util::String::match(f, "/(\\w+)/(.*)");
+    ASSERT("parts after match == 2", r.size() == 3);
+  }
+
+  {
+    auto r = Util::String::match("/foo/bar/", "/(\\w+)/(\\w+)/");
+    ASSERT("match (passing)", r[1] == "foo" && r[2] == "bar");
+  }
+
+  {
+    auto r = Util::String::match("crap", "/(\\w+)/(\\w+)/");
+    ASSERT("match (failing)", r.empty());
+  }
+
+  {
+    auto r = Util::String::test("f", "[a-zA-Z]");
+    ASSERT("test (passing)", r == true);
+  }
+
+  {
+    auto r = Util::String::test("1", "[a-zA-Z]");
+    ASSERT("test (failing)", r == false);
+  }
+
+  {
+    auto r = Util::String::test(f, "^/(\\w+)/(\\w+)/(\\w+)-path.js$");
+    ASSERT("test exact", r == true);
+  }
+
+  {
+    auto r = Util::String::test(f, "^(\\w+)/(\\w+)/(\\w+)-path.js$");
+    ASSERT("test exact", r == false);
   }
 
   ASSERT("count == plan", count == plan)

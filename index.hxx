@@ -41,6 +41,19 @@ namespace Util {
       return elems;
     }
 
+    inline std::smatch match (const String& s, const String& sre) {
+      std::regex RE(sre);
+      std::smatch result;
+      std::regex_match(s, result, RE);
+      return result;
+    }
+
+    inline bool test (const String& s, const String& sre) {
+      std::regex RE(sre);
+      std::smatch result;
+      return std::regex_match(s, result, RE);
+    }
+
     inline String replace(const String &s, const String &res, const String &rep) {
       return std::regex_replace(s, std::regex(res), rep);
     }

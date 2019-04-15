@@ -21,6 +21,23 @@ auto r = Util::String::split(f, "/");
 ASSERT("parts after split == 4", r.size() == 4);
 ```
 
+### MATCH
+If not empty, returns an array of matches starting with the complete input
+at index `0`.
+
+```c++
+auto r = Util::String::match(f, "/(\\w+)/(.*)");
+ASSERT("parts after match == 2", r.size() == 3);
+```
+
+### TEST
+Test if an array 
+
+```c++
+auto r = Util::String::test(f, "^/(\\w+)/(\\w+)/(\\w+)-path.js$");
+ASSERT("test exact", r == true);
+```
+
 ### TRIM, RTRIM, LTRIM
 
 ```c++
