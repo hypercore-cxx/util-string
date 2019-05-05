@@ -8,6 +8,7 @@
 namespace Util {
   namespace String {
     using String = std::string;
+    using ReplaceCallback = std::function<std::string (const std::string&, int)>;
 
     inline std::vector<String> split(const String &s, const String &res) {
       std::vector<String> elems;
@@ -54,10 +55,6 @@ namespace Util {
       return std::regex_match(s, result, RE);
     }
 
-    inline String replace(const String &s, const String &res, const String &rep) {
-      return std::regex_replace(s, std::regex(res), rep);
-    }
-
     const char* ws = " \t\n\r\f\v";
 
     inline String rtrim(const String& s, const char* t = ws) {
@@ -76,13 +73,11 @@ namespace Util {
       return ltrim(rtrim(s, t), t);
     }
 
-    //
-    // It is not possible to explicitly instantiate a function template that
-    // accepts a lambda since lambda types are generated for each compilation
-    // unit. Hence, this type of implementation must live in the header file.
-    //
-    template<class F>
-    inline String replace_token(const String s, const String res, F&& cb) {
+    inline String replace(const String &s, const String &res, const String &rep) {
+      return std::regex_replace(s, std::regex(res), rep);
+    }
+
+    inline String replace(const String s, const String res, ReplaceCallback&& cb) {
       std::regex re(res);
 
       String ret;

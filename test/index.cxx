@@ -39,7 +39,7 @@ int main () {
   {
     const string s = "Hello, World!";
 
-    auto r = Util::String::replace_token(s, "l", [&](string const& m, int index) {
+    auto r = Util::String::replace(s, "l", [&](string const& m, int index) {
       return string("L" + to_string(index));
     });
 
